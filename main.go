@@ -24,7 +24,7 @@ type ThingSpeak struct {
 
 func create_thingspeak_payload(temperature, humidity int) []byte {
 	thingspeak_payload := ThingSpeak{
-		Api_key: "PQXHMRYVQN2Z7SQW",
+		Api_key: "my_api_key",
 		Field1:  temperature,
 		Field2:  humidity,
 	}
@@ -46,11 +46,12 @@ func send_payload_to_thingspeak(payload []byte) (string, []byte) {
 	if err != nil {
 		panic(err)
 	}
+
 	return resp.Status, bytes_response
+
 }
 
 func main() {
-
 	for int := 0; int < 10; int++ {
 		random_temperature := rand.Intn(35-30) + 30
 		random_humidity := rand.Intn(100-90) + 90
